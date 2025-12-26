@@ -266,8 +266,78 @@ const AuthKeysView: React.FC = () => {
 
     if (error) {
         return (
-            <Box p={4}>
-                <Text color="red">Error: {error}</Text>
+            <Box>
+                <Box
+                    backgroundColor="#fff"
+                    minHeight="90vh"
+                    sx={{
+                        border: "1px solid #e0e0e0",
+                        borderRadius: "10px",
+                        padding: "20px",
+                        margin: "10px",
+                    }}
+                >
+                    <Flex justifyContent="space-between" alignItems="center" mb={4}>
+                        <Flex alignItems="center">
+                            <Box
+                                as="button"
+                                mr={3}
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    height: '36px',
+                                    width: '36px',
+                                    border: '1px solid #e0e0e0',
+                                    borderRadius: '4px',
+                                    bg: 'transparent',
+                                    cursor: 'pointer',
+                                    '&:hover': {
+                                        bg: '#f7f7f7'
+                                    }
+                                }}
+                                onClick={() => navigate('/dashboard')}
+                            >
+                                <FaArrowLeft size={16} />
+                            </Box>
+                            <Text fontSize="28px" fontWeight="bold">
+                                Auth Keys
+                            </Text>
+                        </Flex>
+                        <Button
+                            onClick={() => setShowModal(true)}
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <Box mr={1}>
+                                <FaPlus size={14} />
+                            </Box>
+                            Create Auth Key
+                        </Button>
+                    </Flex>
+
+                    <Box
+                        p={4}
+                        sx={{
+                            textAlign: 'center',
+                            backgroundColor: '#fff5f5',
+                            borderRadius: '8px',
+                            border: '1px solid #ffcdd2',
+                        }}
+                    >
+                        <Text fontSize="18px" fontWeight="semibold" mb={2} color="#d32f2f">
+                            Error: {error}
+                        </Text>
+                    </Box>
+                </Box>
+
+                <CreateAuthKeyModal
+                    isOpen={showModal}
+                    onClose={() => setShowModal(false)}
+                    onCreate={handleCreateAuthKey}
+                />
             </Box>
         );
     }
