@@ -329,20 +329,9 @@ const AuthKeysView: React.FC = () => {
                             border: '1px solid #ffcdd2',
                         }}
                     >
-                        <Text fontSize="18px" fontWeight="bold" mb={2} color="#d32f2f">
+                        <Text fontSize="18px" fontWeight="semibold" mb={2} color="#d32f2f">
                             Error: {error}
                         </Text>
-                        <Text fontSize="16px" color="#666" mb={3}>
-                            There was an error loading auth keys. You can still create a new auth key.
-                        </Text>
-                        <Button onClick={() => setShowModal(true)}>
-                            <Flex alignItems="center">
-                                <Box mr={1}>
-                                    <FaPlus size={14} />
-                                </Box>
-                                Create Auth Key
-                            </Flex>
-                        </Button>
                     </Box>
                 ) : authKeys.length === 0 ? (
                     <Box
